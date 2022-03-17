@@ -103,6 +103,19 @@
 
 						?>
 					</td>
+					<td>
+						<?php
+						if ($total >= 90 || $total >= 94) {
+							echo '<span class="badge badge-success">w/ Honor</span>';
+						}
+						else if ($total >= 95 || $total >= 97) {
+							echo '<span class="badge badge-success">w/ High Honor</span>';
+						}
+						else if ($total >= 98 || $total >= 99) {
+							echo '<span class="badge badge-success">w/ Highest</span>';
+						}
+						?>
+					</td>
 				</tr>
 				<?php
 				}

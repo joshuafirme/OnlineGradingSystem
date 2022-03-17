@@ -39,6 +39,7 @@
 			                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Year Level</th>
 			                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Course</th>
 			                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Total Average</th>
+							<th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;"></th>
 			            </tr>
 			        </thead>                                                                       
 			        <tbody id="loadstudents"></tbody>

@@ -85,7 +85,7 @@
                 }
                 ?>
                 <?php 
-                if ($rowmodule['view_grades'] == 1) {
+                if ($rowmodule['view_grades'] == 1 && $rowmodule['role_name'] != 'admin') {
                     ?>
                         <li><a href="index.php?url=grades" class="dropdown-item"><i class="fas fa-chart-bar"></i> Grades</a></li>
                     <?php
