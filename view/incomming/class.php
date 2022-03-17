@@ -4,19 +4,33 @@ include '../../connection/connect.php';
 
 switch ($_POST['form']) {
 	case 'countRequest':
-		$arr = "SELECT COUNT(id) FROM tbl_loads WHERE request = 'PENDING'";
-		$rarr = mysqli_query($connect, $arr);
-		$rowA = mysqli_fetch_array($rarr);
+		$sql = "SELECT * FROM tbl_loads";
+		$res = mysqli_query($connect, $sql);
+		$rowA = 0;
+		$rowB = 0;
+		$rowC = 0;
+		while ($row = mysqli_fetch_array($res)) {
+			$count1 = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."' AND section = '".$row['section']."' AND status = 1 AND INSTRUCTOR_ID = '".$row['userID']."'";	
+			$rescount1 = mysqli_query($connect, $count1);
+			$rowcount1 = mysqli_fetch_array($rescount1);
+			if ($rowcount1[0] > 0) {
+				$rowA++;
+			}
+			$count2 = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."' AND section = '".$row['section']."' AND status = 2 AND INSTRUCTOR_ID = '".$row['userID']."'";	
+			$rescount2 = mysqli_query($connect, $count2);
+			$rowcount2 = mysqli_fetch_array($rescount2);
+			if ($rowcount2[0] > 0) {
+				$rowB++;
+			}
+			$count3 = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."' AND section = '".$row['section']."' AND status = 0 AND INSTRUCTOR_ID = '".$row['userID']."'";	
+			$rescount3 = mysqli_query($connect, $count3);
+			$rowcount3 = mysqli_fetch_array($rescount3);
+			if ($rowcount3[0] > 0) {
+				$rowC++;
+			}
+		}
 
-		$drr = "SELECT COUNT(id) FROM tbl_loads WHERE request = 'APPROVED'";
-		$rdd = mysqli_query($connect, $drr);
-		$rowB = mysqli_fetch_array($rdd);
-
-		$cdd = "SELECT COUNT(id) FROM tbl_loads WHERE request = 'DECLINED'";
-		$dcc = mysqli_query($connect, $cdd);
-		$rowC = mysqli_fetch_array($dcc);
-
-		echo $rowA[0]."|".$rowB[0]."|".$rowC[0];
+		echo $rowA."|".$rowB."|".$rowC;
 	break;
 
 	case 'viewinfo':
@@ -36,9 +50,11 @@ switch ($_POST['form']) {
 	break;
 
 	case 'managegrade':
-					$sql = "SELECT A.USERID ,A.quaterly_final, B.quaterly_final, C.quaterly_final, D.quaterly_final FROM `tbl_studload_qt1` AS A LEFT JOIN `tbl_studload_qt2` AS B ON A.SUBJ_ID = B.SUBJ_ID LEFT JOIN `tbl_studload_qt3` AS C ON B.SUBJ_ID = C.SUBJ_ID LEFT JOIN `tbl_studload_qt4` AS D ON C.SUBJ_ID = D.SUBJ_ID WHERE A.SUBJ_ID = '".$_POST['id']."' AND A.INSTRUCTOR_ID = '".$_POST['id2']."' GROUP BY A.USERID";
+					$sql = "SELECT A.USERID ,A.quaterly_final, B.quaterly_final, C.quaterly_final, D.quaterly_final, A.status, A.ST_SUBJID FROM `tbl_studload_qt1` AS A LEFT JOIN `tbl_studload_qt2` AS B ON A.SUBJ_ID = B.SUBJ_ID LEFT JOIN `tbl_studload_qt3` AS C ON B.SUBJ_ID = C.SUBJ_ID LEFT JOIN `tbl_studload_qt4` AS D ON C.SUBJ_ID = D.SUBJ_ID WHERE A.SUBJ_ID = '".$_POST['id']."' AND A.INSTRUCTOR_ID = '".$_POST['id2']."' GROUP BY A.USERID";
 					$res = mysqli_query($connect, $sql);
 					while ($row = mysqli_fetch_array($res)) {
+
+						if ($row[5] == 1) {
 
 						$names = "SELECT * FROM tbl_users WHERE userID = '".$row[0]."'";
 						$resnames = mysqli_query($connect, $names);
@@ -50,7 +66,7 @@ switch ($_POST['form']) {
 						?>
 						<tr style="text-align: center;" >
 							<td>
-								<input type="checkbox" name="load_ids[]" value="<?php echo $row[0]; ?>">
+								<input type="checkbox" name="load_ids[]" value="<?php echo $row[6]; ?>">
 							</td>
 							<td style="text-align: center;"><img style="width: 50px; height: 50px; border-radius: 50%;" src="assets/images/users/<?php echo $rownames['user_avatar']; ?>">
 								<input type="hidden" class="form-control table-input" value="<?php echo $row['ST_SUBJID']; ?>" readonly>
@@ -80,6 +96,7 @@ switch ($_POST['form']) {
 							?></td>
 						</tr>
 						<?php
+						}
 					}
 	break;
 
@@ -133,9 +150,14 @@ switch ($_POST['form']) {
 	break;
 
 	case 'loadclass':
-			$sql = "SELECT * FROM tbl_loads WHERE request = 'PENDING'";
+			$sql = "SELECT * FROM tbl_loads";
 			$res = mysqli_query($connect, $sql);
 			while ($row = mysqli_fetch_array($res)) {
+				
+				$count = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."' AND section = '".$row['section']."' AND status = 1 AND INSTRUCTOR_ID = '".$row['userID']."'";	
+				$rescount = mysqli_query($connect, $count);
+				$rowcount = mysqli_fetch_array($rescount);
+				if ($rowcount[0] > 0) {
 				?>
 				<tr>
 					<td style="text-align: center;"><?php
@@ -157,25 +179,12 @@ switch ($_POST['form']) {
 					</td>
 					<td style="text-align: center;">
 					<?php 
-					$count = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."' AND INSTRUCTOR_ID = '".$row['userID']."'";	
-					$rescount = mysqli_query($connect, $count);
-					$rowcount = mysqli_fetch_array($rescount);
 					echo $rowcount[0];
 					?></td>
 					<td style="text-align: center;"><button class="btn btn-info" onclick="viewManageGrade('<?php echo $row['SUBJ_ID']; ?>','<?php echo $row['userID']; ?>','<?php echo $row['section']; ?>');"><i class="fas fa-search"></i> Review Grades</button></td>
-							<td>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="ti-settings"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                     <a class="dropdown-item bg-success text-white" href="javascript:void(0)" onclick="approvedGrade();"><i class="fas fa-thumbs-up"></i> Approve</a>
-									 <a class="dropdown-item bg-danger text-white" href="javascript:void(0)" onclick="declinedGrade('<?php echo $row['id']; ?>');"><i class="fas fa-thumbs-down"></i> Decline</a>
-                                    </div>
-                                </div>
-							</td>
 				</tr>
 				<?php
+				}
 			}
 	break;
 
@@ -206,14 +215,14 @@ switch ($_POST['form']) {
 	break;
 
 	case 'approvedGrade':
-			$sql = "UPDATE tbl_loads SET request = 'APPROVED' WHERE id = '".$_POST['id']."'";	
+			$sql = "UPDATE tbl_studload_qt1 SET status = 2 WHERE ST_SUBJID IN (".$_POST['ids'].")";	
 			$res = mysqli_query($connect, $sql);
 			echo $res;
 	break;
 
 
 	case 'decline':
-			$sql = "UPDATE tbl_loads SET request = 'DECLINED', remarks = '".$_POST['remarks']."' WHERE id = '".$_POST['id']."'";	
+			$sql = "UPDATE tbl_studload_qt1 SET status = 0, remarks = '".$_POST['remarks']."' WHERE ST_SUBJID IN (".$_POST['ids'].")";	
 			$res = mysqli_query($connect, $sql);
 			echo $res;
 	break;

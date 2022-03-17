@@ -19,7 +19,6 @@
 		                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Students</th>
 		                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Grades</th>
 		                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Remarks</th>
-		                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Status</th>
 		            </tr>
 		        </thead>                                                                       
 		        <tbody id="loadclasslist"></tbody>

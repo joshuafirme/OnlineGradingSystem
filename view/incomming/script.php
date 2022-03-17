@@ -3,12 +3,31 @@
 		loadclasslist();
 		loadroom();
 		$('#tableClassList').dataTable();
+		$("#select_all").click(function(){
+			$('input:checkbox').not(this).prop('checked', this.checked);
+		});
 	})
 
+	function getSelectedIDsVal() {
+		let ids = $("#loadmanagegrade input:checkbox:checked").map(function(){
+      			return $(this).val();
+    		}).get(); 
+
+		return ids.join(',');
+	}
 
 	function approvedGrade(){
-		console.log($('[name=load_ids]').val());
-		return;
+
+			let ids = getSelectedIDsVal();
+			
+			if (ids.length == 0) {
+				Swal.fire(
+					'',
+					'Please select a student!',
+					'fail'
+				)
+				return;
+			}
 		    Swal.fire({
 		      title: 'Are you sure?',
 		      text: "Do you want to approved this?",
@@ -22,7 +41,7 @@
 			        $.ajax({
 			          type: 'POST',
 					  url:  'view/incomming/class.php',
-			          data: 'form=approvedGrade&id='+id, 
+			          data: 'form=approvedGrade&ids='+ids, 
 			          success: function(data){  
 			          	if (data == 1) {
 							loadclasslist();
@@ -41,6 +60,16 @@
 		  }
 
      function declinedGrade(id){
+		let ids = getSelectedIDsVal();
+			
+			if (ids.length == 0) {
+				Swal.fire(
+					'',
+					'Please select a student!',
+					'fail'
+				)
+				return;
+			}
      	$('#declinedid').val(id);
      	$('#declinedGrade').modal('show');
      }
@@ -57,13 +86,14 @@
 		      confirmButtonText: 'Yes'
 		    }).then((result) => {
 		      if (result.value) {
-		      		var id = $('#declinedid').val();
+				let ids = getSelectedIDsVal();
+				console.log(ids)
 		      		var remarks = $('#remarks').val();
 
 			        $.ajax({
 			          type: 'POST',
 					  url:  'view/incomming/class.php',
-			          data: 'form=decline&id='+id+'&remarks='+remarks, 
+			          data: 'form=decline&ids='+ids+'&remarks='+remarks, 
 			          success: function(data){  
 			          	if (data == 1) {
 			          		$('#declinedGrade').modal('hide');

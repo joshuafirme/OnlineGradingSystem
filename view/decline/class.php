@@ -126,9 +126,14 @@ case 'managegrade':
 
 
 	case 'loadclass':
-			$sql = "SELECT * FROM tbl_loads WHERE request = 'DECLINED'";
+			$sql = "SELECT * FROM tbl_loads";
 			$res = mysqli_query($connect, $sql);
 			while ($row = mysqli_fetch_array($res)) {
+				
+				$count = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."' AND status = 0 AND INSTRUCTOR_ID = '".$row['userID']."'";	
+				$rescount = mysqli_query($connect, $count);
+				$rowcount = mysqli_fetch_array($rescount);
+				if ($rowcount[0] > 0) {
 				?>
 				<tr>
 					<td style="text-align: center;"><?php
@@ -150,9 +155,6 @@ case 'managegrade':
 					</td>
 					<td style="text-align: center;">
 					<?php 
-					$count = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."' AND INSTRUCTOR_ID = '".$row['userID']."'";	
-					$rescount = mysqli_query($connect, $count);
-					$rowcount = mysqli_fetch_array($rescount);
 					echo $rowcount[0];
 					?></td>
 					<td style="text-align: center;">
@@ -162,6 +164,7 @@ case 'managegrade':
 							</td>
 				</tr>
 				<?php
+				}
 			}
 	break;
 

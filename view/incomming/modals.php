@@ -29,7 +29,7 @@
                  <table id="tblmanageGrade" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead class="bg-info text-white">
                             <tr>
-                                <th>Select</th>
+                                <th><input type="checkbox" id="select_all"></th>
                                 <th></th>
                                 <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Student Name</th>
                                 <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">1st</th>
@@ -45,6 +45,8 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <a class="btn btn-success" href="javascript:void(0)" onclick="approvedGrade();"><i class="fas fa-thumbs-up"></i> Approve</a>
+				<a class="btn btn-danger" href="javascript:void(0)" onclick="declinedGrade('<?php echo $row['id']; ?>');"><i class="fas fa-thumbs-down"></i> Decline</a>
             </div>
         </div>
     </div>

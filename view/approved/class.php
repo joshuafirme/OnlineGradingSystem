@@ -29,9 +29,11 @@ switch ($_POST['form']) {
 
 
 	case 'managegrade':
-					$sql = "SELECT A.USERID ,A.quaterly_final, B.quaterly_final, C.quaterly_final, D.quaterly_final FROM `tbl_studload_qt1` AS A LEFT JOIN `tbl_studload_qt2` AS B ON A.SUBJ_ID = B.SUBJ_ID LEFT JOIN `tbl_studload_qt3` AS C ON B.SUBJ_ID = C.SUBJ_ID LEFT JOIN `tbl_studload_qt4` AS D ON C.SUBJ_ID = D.SUBJ_ID WHERE A.SUBJ_ID = '".$_POST['id']."' AND A.INSTRUCTOR_ID = '".$_POST['id2']."' GROUP BY A.USERID";
+					$sql = "SELECT A.USERID ,A.quaterly_final, B.quaterly_final, C.quaterly_final, D.quaterly_final, A.status FROM `tbl_studload_qt1` AS A LEFT JOIN `tbl_studload_qt2` AS B ON A.SUBJ_ID = B.SUBJ_ID LEFT JOIN `tbl_studload_qt3` AS C ON B.SUBJ_ID = C.SUBJ_ID LEFT JOIN `tbl_studload_qt4` AS D ON C.SUBJ_ID = D.SUBJ_ID WHERE A.SUBJ_ID = '".$_POST['id']."' AND A.INSTRUCTOR_ID = '".$_POST['id2']."' GROUP BY A.USERID";
 					$res = mysqli_query($connect, $sql);
 					while ($row = mysqli_fetch_array($res)) {
+
+						if ($row[5] == 2) {
 
 						$names = "SELECT * FROM tbl_users WHERE userID = '".$row[0]."'";
 						$resnames = mysqli_query($connect, $names);
@@ -70,6 +72,7 @@ switch ($_POST['form']) {
 							?></td>
 						</tr>
 						<?php
+						}
 					}
 	break;
 
@@ -126,9 +129,14 @@ switch ($_POST['form']) {
 
 
 	case 'loadclass':
-			$sql = "SELECT * FROM tbl_loads WHERE request = 'APPROVED'";
+			$sql = "SELECT * FROM tbl_loads";
 			$res = mysqli_query($connect, $sql);
 			while ($row = mysqli_fetch_array($res)) {
+
+				$count = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."' AND section = '".$row['section']."' AND status = 2 AND INSTRUCTOR_ID = '".$row['userID']."'";	
+				$rescount = mysqli_query($connect, $count);
+				$rowcount = mysqli_fetch_array($rescount);
+				if ($rowcount[0] > 0) {
 				?>
 				<tr>
 					<td style="text-align: center;"><?php
@@ -150,9 +158,6 @@ switch ($_POST['form']) {
 					</td>
 					<td style="text-align: center;">
 					<?php 
-					$count = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."' AND INSTRUCTOR_ID = '".$row['userID']."'";	
-					$rescount = mysqli_query($connect, $count);
-					$rowcount = mysqli_fetch_array($rescount);
 					echo $rowcount[0];
 					?></td>
 					<td style="text-align: center;">
@@ -162,6 +167,7 @@ switch ($_POST['form']) {
 							</td>
 				</tr>
 				<?php
+				}
 			}
 	break;
 
