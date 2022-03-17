@@ -1,5 +1,5 @@
 <?php 
-  error_reporting(E_ALL ^ (E_NOTICE | E_WARNING | E_DEPRECATED));
+error_reporting(E_ALL);
   session_start(); 
   date_default_timezone_set('Asia/Kuala_Lumpur');
 

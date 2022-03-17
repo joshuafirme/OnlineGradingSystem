@@ -138,6 +138,8 @@
                             include 'view/award_ref/index.php'; 
                     }else if ($_REQUEST['url'] == 'myrecords') {
                             include 'view/myrecords/index.php'; 
+                    }else if ($_REQUEST['url'] == 'school_yr_maintenance') {
+                            include 'view/school-yr-maintenance/index.php'; 
                     }else if ($_REQUEST['url'] == 'archives') {
                             include 'view/archves/index.php'; 
                     }

@@ -127,6 +127,13 @@
                 }  
                 ?>
                 <?php 
+                if ($rowmodule['view_school_yr_maintenance'] == 1) {
+                    ?>
+                      <li><a href="index.php?url=school_yr_maintenance" class="dropdown-item"><i class="fas fa-folder"></i> School Year Maintenance</a></li>
+                    <?php
+                }  
+                ?>
+                <?php 
                 if ($rowmodule['view_manage_users'] == 1) {
                     ?>
                           <li><a href="index.php?url=user_access" class="dropdown-item"><i class="fas fa-users"></i> Manage Users</a></li>

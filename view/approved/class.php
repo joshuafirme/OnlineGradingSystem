@@ -64,9 +64,9 @@ switch ($_POST['form']) {
 								if ($total == "") {
 									echo '';
 								} else if($total < 75) {
-									echo 'FAILED';
+									echo '<span class="badge badge-danger">FAILED</span>';
 								} else if($total > 74){
-									echo 'PASSED';
+									echo '<span class="badge badge-success">PASSED</span>';
 								}
 
 							?></td>
