@@ -3,6 +3,30 @@
 
 
 		switch ($_POST['form']) {
+			case 'shool_yr':
+				$sql = "SELECT AC_YR, SEMESTER FROM tbl_erecords";
+				$res = mysqli_query($connect, $sql);
+				$arr_temp = [];
+				while ($row = mysqli_fetch_array($res)) {
+	
+					$sem = $row['SEMESTER'];
+					$to_push = $row['AC_YR'] . $sem;
+	
+					if (!in_array($to_push, $arr_temp)) {
+					?>
+					<tr>
+						<td style="text-align: center;">
+						<?php
+							echo $row['AC_YR'] . " " . $sem . " " . ' Term';
+						?>
+						</td>
+						<td style="text-align: center;"><a class="btn btn-info" href="index.php?url=myrecords&sy=<?php echo $row['AC_YR'] ?>&term=<?php echo $sem ?>"> View</a></td>
+					</tr>
+					<?php
+					array_push($arr_temp, $to_push);
+					}
+				}
+			break;
 
 			case 'studload':
 			$sql = "SELECT * FROM tbl_studload_qt1 WHERE userID = '".$_SESSION['userID']."' AND ENROLLED_ID = '".$_POST['eid']."' AND status = 1";
@@ -163,7 +187,7 @@
 			break;
 
 			case 'loadrecords':
-				$sql = "SELECT * FROM tbl_erecords WHERE userID = '".$_SESSION['userID']."'";
+				$sql = "SELECT * FROM tbl_erecords WHERE userID = '".$_SESSION['userID']."' AND AC_YR = '".$_POST['sy']."' AND SEMESTER = '".$_POST['term']."'";
 				$res = mysqli_query($connect, $sql);
 				while ($row = mysqli_fetch_array($res)) {
 				?>

@@ -92,7 +92,7 @@
                 }
                 ?>
                 <?php 
-                if ($rowmodule['view_myrecords'] == 1) {
+                if ($rowmodule['view_myrecords'] == 1 && $rowmodule['role_name'] != 'admin') {
                     ?>
                         <li><a href="index.php?url=myrecords" class="dropdown-item"><i class="fas fa-book"></i> My Records</a></li>
                     <?php

@@ -103,6 +103,7 @@ switch ($_POST['form']) {
 			$count = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."' AND section = '".$row['section']."' AND INSTRUCTOR_ID = '".$row['userID']."'";	
 			$rescount = mysqli_query($connect, $count);
 			$rowcount = mysqli_fetch_array($rescount);
+			if ($rowcount[0] > 0) {
 			?>
 			<tr>
 				<td style="text-align: center;"><?php
@@ -122,13 +123,14 @@ switch ($_POST['form']) {
 				<td>
 					<?php echo $row['section']; ?>
 				</td>
-				<td style="text-align: center;">
+			<!--	<td style="text-align: center;">
 				<?php 
-				echo $rowcount[0];
-				?></td>
+				//echo $rowcount[0];
+				?></td>-->
 				<td style="text-align: center;"><button class="btn btn-info" onclick="viewManageGrade('<?php echo $row['SUBJ_ID']; ?>','<?php echo $row['userID']; ?>','<?php echo $row['section']; ?>');"><i class="fas fa-search"></i> Review Grades</button></td>
 			</tr>
 			<?php
+			}
 		}
 	break;
 }

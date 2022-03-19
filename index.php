@@ -137,7 +137,12 @@
                     }else if ($_REQUEST['url'] == 'awardtitle') {
                             include 'view/award_ref/index.php'; 
                     }else if ($_REQUEST['url'] == 'myrecords') {
-                            include 'view/myrecords/index.php'; 
+                            if ($rowmodule['role_name'] == 'admin') {
+                                include 'view/myrecords/admin.php'; 
+                            }
+                            else {
+                                include 'view/myrecords/index.php'; 
+                            }
                     }else if ($_REQUEST['url'] == 'school_yr_maintenance') {
                             include 'view/school-yr-maintenance/index.php'; 
                     }else if ($_REQUEST['url'] == 'archives') {

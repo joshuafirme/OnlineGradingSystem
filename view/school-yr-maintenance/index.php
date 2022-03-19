@@ -51,7 +51,6 @@
 		                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Instructor</th>
 		                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Subject</th>
 		                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Section</th>
-		                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Students</th>
 		                <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Grades</th>
 		            </tr>
 		        </thead>                                                                       

@@ -1,6 +1,7 @@
 <script type="text/javascript">
 	
 	$(function(){
+		loadSchoolYear();
 		loaduserinfo();
 		loadrecords();
 		$('#tblrecords').dataTable();
@@ -11,7 +12,17 @@
 
 	})
 
-
+	function loadSchoolYear() {
+		$.ajax({
+			type: 'POST',
+			url:  'view/myrecords/class.php',
+			data: 'form=shool_yr',
+			async:false,
+			success:function(data){
+				$('#loadclasslist').html(data);
+			}
+		})
+	}
 
 	  function enrollsubj(subj,instructor,room,section,yearlevel,academicyear,days,time){
 	    Swal.fire({
@@ -116,12 +127,16 @@
 	}
 
 	function loadrecords(){
+		var url_string = window.location.href; 
+		var url = new URL(url_string);
+		var sy = url.searchParams.get("sy");
+		var term = url.searchParams.get("term");
 		var id = $('#userID').val();
-
+	
 		$.ajax({
 			type:'POST',
 			url:'view/myrecords/class.php',
-			data:'form=loadrecords&id='+id,
+			data:'form=loadrecords&id='+id+'&sy='+sy+'&term='+term,
 			async:false,
 			success:function(data){
 				$('#loadrecords').html(data);
