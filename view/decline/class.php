@@ -132,7 +132,7 @@ case 'managegrade':
 			$res = mysqli_query($connect, $sql);
 			while ($row = mysqli_fetch_array($res)) {
 				
-				$count = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."' AND status = 0 AND INSTRUCTOR_ID = '".$row['userID']."'";	
+				$count = "SELECT COUNT(ST_SUBJID) FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$row['SUBJ_ID']."'AND section = '".$row['section']."' AND status = 0 AND INSTRUCTOR_ID = '".$row['userID']."'";	
 				$rescount = mysqli_query($connect, $count);
 				$rowcount = mysqli_fetch_array($rescount);
 				if ($rowcount[0] > 0) {

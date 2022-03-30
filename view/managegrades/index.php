@@ -32,7 +32,14 @@
         <div class="card-body">
             <div class="row" style="padding-bottom: 15px;">
                     <input type="hidden" id="subjectid" value="<?php echo $_GET['SUBJ_ID']; ?>">
+                    <?php 
+                        $id_temp = $_GET['UID'];
+                        if (isset($_GET['resubmit'])) {
+                            $id_temp = $_GET['INSTRUCTOR_ID'];
+                        }
+                    ?>
                     <input type="hidden" id="instructorid" value="<?php echo $_GET['UID']; ?>">
+                    <input type="hidden" id="instructorid2" value="<?php echo $id_temp; ?>">
                 <div class="col-md-4">
                     <label>Subject:</label>
                     <input type="text" class="form-control" id="subject"  readonly="">
@@ -116,6 +123,7 @@
                         </div>
                     </div>
                 </div>
+                <button class="btn btn-info m-3" onclick="resubmit('<?php echo $_GET['UID'] ?>');">RESUBMIT</button>
             </div>
         </div>      
     </div>

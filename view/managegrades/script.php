@@ -29,6 +29,7 @@
 
 		var id = $('#subjectid').val();
 		var id2 = $('#instructorid').val();
+		var id3 = $('#instructorid2').val();
 
 		var url_string = window.location.href; 
 		var url = new URL(url_string);
@@ -37,7 +38,7 @@
 		$.ajax({
 			type:'POST',
 			url:'view/managegrades/class.php',
-			data:'form=loadstudent&id='+id+'&id2='+id2+'&resubmit='+resubmit,
+			data:'form=loadstudent&id='+id+'&id2='+id2+'&resubmit='+resubmit+'&id3='+id3,
 			async:false,
 			success:function(data){
 				$('#loadfirstgrade').html(data);
@@ -53,6 +54,7 @@
 	function loadstudent2(){
 		var id = $('#subjectid').val();
 		var id2 = $('#instructorid').val();
+		var id3 = $('#instructorid2').val();
 
 		var url_string = window.location.href; 
 		var url = new URL(url_string);
@@ -60,7 +62,7 @@
 		$.ajax({
 			type:'POST',
 			url:'view/managegrades/class.php',
-			data:'form=loadstudent2&id='+id+'&id2='+id2+'&resubmit='+resubmit,
+			data:'form=loadstudent2&id='+id+'&id2='+id2+'&resubmit='+resubmit+'&id3='+id3,
 			success:function(data){
 				$('#loadsecondgrade').html(data);
 				$('#tbl_studload_qt2').dataTable();
@@ -74,13 +76,14 @@
 	function loadstudent3(){
 		var id = $('#subjectid').val();
 		var id2 = $('#instructorid').val();
+		var id3 = $('#instructorid2').val();
 		var url_string = window.location.href; 
 		var url = new URL(url_string);
 		var resubmit = url.searchParams.get("resubmit");
 		$.ajax({
 			type:'POST',
 			url:'view/managegrades/class.php',
-			data:'form=loadstudent3&id='+id+'&id2='+id2+'&resubmit='+resubmit,
+			data:'form=loadstudent3&id='+id+'&id2='+id2+'&resubmit='+resubmit+'&id3='+id3,
 			success:function(data){
 				$('#loadthirdgrade').html(data);
 				$('#tbl_studload_qt3').dataTable();
@@ -94,13 +97,14 @@
 	function loadstudent4(){
 		var id = $('#subjectid').val();
 		var id2 = $('#instructorid').val();
+		var id3 = $('#instructorid2').val();
 		var url_string = window.location.href; 
 		var url = new URL(url_string);
 		var resubmit = url.searchParams.get("resubmit");
 		$.ajax({
 			type:'POST',
 			url:'view/managegrades/class.php',
-			data:'form=loadstudent4&id='+id+'&id2='+id2+'&resubmit='+resubmit,
+			data:'form=loadstudent4&id='+id+'&id2='+id2+'&resubmit='+resubmit+'&id3='+id3,
 			success:function(data){
 				$('#loadf4thgrade').html(data);
 				$('#tbl_studload_qt4').dataTable();
@@ -114,10 +118,14 @@
 	function loadfinalGrade() {
 		var id = $('#subjectid').val();
 		var id2 = $('#instructorid').val();
+		var id3 = $('#instructorid2').val();
+		var url_string = window.location.href; 
+		var url = new URL(url_string);
+		var resubmit = url.searchParams.get("resubmit");
 		$.ajax({
 			type: 'POST',
 			url:  'view/managegrades/class.php',
-			data: 'form=loadfinalGrade'+'&id='+id+'&id2='+id2,
+			data: 'form=loadfinalGrade'+'&id='+id+'&id2='+id2+'&resubmit='+resubmit+'&id3='+id3,
 			success:function(data){
 				$('#loadfinalGrade').html(data);
 				$('#tbfinalgrade').dataTable();
@@ -465,6 +473,36 @@ function updateFG(act){
 		  	});
       });
 
+}
+
+function resubmit (id) {
+	Swal.fire({
+		      title: 'Are you sure?',
+		      text: "Do you want to resubmit grades?",
+		      icon: 'warning',
+		      showCancelButton: true,
+		      confirmButtonColor: '#3085d6',
+		      cancelButtonColor: '#d33',
+		      confirmButtonText: 'Resubmit'
+		    }).then((result) => {
+		      if (result.value) {
+			        $.ajax({
+			          type: 'POST',
+					  url:  'view/managegrades/class.php',
+			          data: 'form=resubmit&id='+id, 
+			          success: function(data){  
+						Swal.fire(
+							  'Success!',
+							  'You have successfully resubmit Grades!',
+							  'success'
+							)
+							setTimeout(() => {
+								location.reload();
+							}, 3000);
+			          }
+			        })
+		      }
+		    })
 }
 
 </script>

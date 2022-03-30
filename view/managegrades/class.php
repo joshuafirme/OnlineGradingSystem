@@ -12,7 +12,11 @@
  			break;
 
  			case 'loadstudent':
- 					$sql2 = "SELECT * FROM `tbl_highestpossible_score` WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$_POST['id2']."'";
+					$post_id = $_POST['id2'];
+					if (isset($_POST['resubmit']) && $_POST['resubmit'] == 1) {
+						$post_id = $_POST['id3'];
+					}
+ 					$sql2 = "SELECT * FROM `tbl_highestpossible_score` WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$post_id."'";
  					$res2 = mysqli_query($connect,$sql2);
  					$row_possible_score = mysqli_fetch_array($res2);
 
@@ -364,7 +368,11 @@
 
  			case 'loadstudent2':
 				
-  					$sql2 = "SELECT * FROM `tbl_highestpossible_score_2` WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$_POST['id2']."'";
+				$post_id = $_POST['id2'];
+				if (isset($_POST['resubmit']) && $_POST['resubmit'] == 1) {
+					$post_id = $_POST['id3'];
+				}
+				 $sql2 = "SELECT * FROM `tbl_highestpossible_score_2` WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$post_id."'";
  					$res2 = mysqli_query($connect,$sql2);
  					$row_possible_score = mysqli_fetch_array($res2);
 
@@ -646,7 +654,11 @@
 	 			break;
 
  			case 'loadstudent3':
-  					$sql2 = "SELECT * FROM `tbl_highestpossible_score_3` WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$_POST['id2']."'";
+				$post_id = $_POST['id2'];
+				if (isset($_POST['resubmit']) && $_POST['resubmit'] == 1) {
+					$post_id = $_POST['id3'];
+				}
+				 $sql2 = "SELECT * FROM `tbl_highestpossible_score_3` WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$post_id."'";
  					$res2 = mysqli_query($connect,$sql2);
  					$row_possible_score = mysqli_fetch_array($res2);
 
@@ -919,7 +931,11 @@
 
 
  			case 'loadstudent4':
-   					$sql2 = "SELECT * FROM `tbl_highestpossible_score_4` WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$_POST['id2']."'";
+				$post_id = $_POST['id2'];
+				if (isset($_POST['resubmit']) && $_POST['resubmit'] == 1) {
+					$post_id = $_POST['id3'];
+				}
+				 $sql2 = "SELECT * FROM `tbl_highestpossible_score_4` WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$post_id."'";
  					$res2 = mysqli_query($connect,$sql2);
  					$row_possible_score = mysqli_fetch_array($res2);
 
@@ -1192,7 +1208,13 @@
 
 
 			case 'loadfinalGrade':
-					$sql = "SELECT A.SUBJ_ID,A.USERID ,A.quaterly_final, B.quaterly_final, C.quaterly_final, D.quaterly_final FROM `tbl_studload_qt1` AS A LEFT JOIN `tbl_studload_qt2` AS B ON A.SUBJ_ID = B.SUBJ_ID LEFT JOIN `tbl_studload_qt3` AS C ON B.SUBJ_ID = C.SUBJ_ID LEFT JOIN `tbl_studload_qt4` AS D ON C.SUBJ_ID = D.SUBJ_ID WHERE A.SUBJ_ID = '".$_POST['id']."' AND A.INSTRUCTOR_ID = '".$_POST['id2']."' GROUP BY A.USERID";
+					$resubmit_status = '';
+					$field_id = 'INSTRUCTOR_ID';
+					if (isset($_POST['resubmit']) && $_POST['resubmit'] == 1) {
+						$resubmit_status = ' AND status = 0';
+						$field_id = 'USERID';
+					}
+					$sql = "SELECT A.SUBJ_ID,A.USERID ,A.quaterly_final, B.quaterly_final, C.quaterly_final, D.quaterly_final FROM `tbl_studload_qt1` AS A LEFT JOIN `tbl_studload_qt2` AS B ON A.SUBJ_ID = B.SUBJ_ID LEFT JOIN `tbl_studload_qt3` AS C ON B.SUBJ_ID = C.SUBJ_ID LEFT JOIN `tbl_studload_qt4` AS D ON C.SUBJ_ID = D.SUBJ_ID WHERE A.SUBJ_ID = '".$_POST['id']."' AND A.$field_id = '".$_POST['id2']."' GROUP BY A.USERID";
 					$res = mysqli_query($connect, $sql);
 					while ($row = mysqli_fetch_array($res)) {
 
@@ -1211,26 +1233,26 @@
 								?>
 							</td>
 							<td><?php
-								  $grade1 = "SELECT quaterly_final FROM `tbl_studload_qt1` WHERE USERID = '".$row[1]."' AND INSTRUCTOR_ID = '".$_POST['id2']."' AND SUBJ_ID = '".$row[0]."'";
+								  $grade1 = "SELECT quaterly_final FROM `tbl_studload_qt1` WHERE USERID = '".$row[1]."' AND $field_id = '".$_POST['id2']."' AND SUBJ_ID = '".$row[0]."'";
 								  $res1g = mysqli_query($connect,$grade1);
 								  $row1g = mysqli_fetch_array($res1g);
 							 	echo $row1g[0]; 
 							 	?>
 							</td>
 							<td><?php
-								  $grade2 = "SELECT quaterly_final FROM `tbl_studload_qt2` WHERE USERID = '".$row[1]."' AND INSTRUCTOR_ID = '".$_POST['id2']."' AND SUBJ_ID = '".$row[0]."'";
+								  $grade2 = "SELECT quaterly_final FROM `tbl_studload_qt2` WHERE USERID = '".$row[1]."' AND $field_id = '".$_POST['id2']."' AND SUBJ_ID = '".$row[0]."'";
 								  $res2g = mysqli_query($connect,$grade2);
 								  $row2g = mysqli_fetch_array($res2g);
 							 	echo $row2g[0]; ?>
 							</td>
 							<td><?php
-								  $grade3 = "SELECT quaterly_final FROM `tbl_studload_qt3` WHERE USERID = '".$row[1]."' AND INSTRUCTOR_ID = '".$_POST['id2']."' AND SUBJ_ID = '".$row[0]."'";
+								  $grade3 = "SELECT quaterly_final FROM `tbl_studload_qt3` WHERE USERID = '".$row[1]."' AND $field_id = '".$_POST['id2']."' AND SUBJ_ID = '".$row[0]."'";
 								  $res3g = mysqli_query($connect,$grade3);
 								  $row3g = mysqli_fetch_array($res3g);
 							 	echo $row3g[0]; ?>
 							</td>
 							<td><?php
-								  $grade4 = "SELECT quaterly_final FROM `tbl_studload_qt4` WHERE USERID = '".$row[1]."' AND INSTRUCTOR_ID = '".$_POST['id2']."' AND SUBJ_ID = '".$row[0]."'";
+								  $grade4 = "SELECT quaterly_final FROM `tbl_studload_qt4` WHERE USERID = '".$row[1]."' AND $field_id = '".$_POST['id2']."' AND SUBJ_ID = '".$row[0]."'";
 								  $res4g = mysqli_query($connect,$grade4);
 								  $row4g = mysqli_fetch_array($res4g);
 							 	echo $row4g[0]; ?>
@@ -1257,6 +1279,13 @@
 						</tr>
 						<?php
 					}
+			break;
+			case 'resubmit':
+				for ($i = 1; $i <= 4; $i++) {
+					$sql = "UPDATE tbl_studload_qt$i SET status = 1 WHERE USERID = '".$_POST['id']."'";	
+					$res = mysqli_query($connect, $sql);
+				}
+					echo $res;
 			break;
  		}
 
