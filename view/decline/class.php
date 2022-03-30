@@ -29,10 +29,10 @@ switch ($_POST['form']) {
 
 
 case 'managegrade':
-					$sql = "SELECT A.USERID ,A.quaterly_final, B.quaterly_final, C.quaterly_final, D.quaterly_final FROM `tbl_studload_qt1` AS A LEFT JOIN `tbl_studload_qt2` AS B ON A.SUBJ_ID = B.SUBJ_ID LEFT JOIN `tbl_studload_qt3` AS C ON B.SUBJ_ID = C.SUBJ_ID LEFT JOIN `tbl_studload_qt4` AS D ON C.SUBJ_ID = D.SUBJ_ID WHERE A.SUBJ_ID = '".$_POST['id']."' AND A.INSTRUCTOR_ID = '".$_POST['id2']."' GROUP BY A.USERID";
+					$sql = "SELECT A.USERID ,A.quaterly_final, B.quaterly_final, C.quaterly_final, D.quaterly_final, A.status, A.SUBJ_ID, A.INSTRUCTOR_ID FROM `tbl_studload_qt1` AS A LEFT JOIN `tbl_studload_qt2` AS B ON A.SUBJ_ID = B.SUBJ_ID LEFT JOIN `tbl_studload_qt3` AS C ON B.SUBJ_ID = C.SUBJ_ID LEFT JOIN `tbl_studload_qt4` AS D ON C.SUBJ_ID = D.SUBJ_ID WHERE A.SUBJ_ID = '".$_POST['id']."' AND A.INSTRUCTOR_ID = '".$_POST['id2']."' GROUP BY A.USERID";
 					$res = mysqli_query($connect, $sql);
 					while ($row = mysqli_fetch_array($res)) {
-
+						if ($row[5] == 0) {
 						$names = "SELECT * FROM tbl_users WHERE userID = '".$row[0]."'";
 						$resnames = mysqli_query($connect, $names);
 						$rownames = mysqli_fetch_array($resnames);
@@ -68,8 +68,10 @@ case 'managegrade':
 								}
 
 							?></td>
+							<td><a class="btn btn-info" href="index.php?url=managegrades&INSTRUCTOR_ID=<?php echo $row[7] ?>&SUBJ_ID=<?php echo $row[6] ?>&resubmit=1&UID=<?php echo $row[0] ?>"> Resubmit</a></td>
 						</tr>
 						<?php
+						}
 					}
 	break;
 

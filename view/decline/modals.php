@@ -25,6 +25,7 @@
                  <table id="tblmanageGrade" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead class="bg-info text-white">
                             <tr>
+                                <th></th>
                                 <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Name</th>
                                 <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">1st</th>
                                 <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">2nd</th>
@@ -32,6 +33,7 @@
                                 <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">4th</th>
                                 <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Final Avg</th>
                                 <th style="text-align: center; border-right: solid 1px #dddddd;z-index: 1;">Remarks</th>
+                                <th>Action</th>
                             </tr>
                         </thead>                                                                       
                         <tbody id="loadmanagegrade"></tbody>

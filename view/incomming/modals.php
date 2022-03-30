@@ -46,7 +46,7 @@
             </div>
             <div class="modal-footer">
                 <a class="btn btn-success" href="javascript:void(0)" onclick="approvedGrade();"><i class="fas fa-thumbs-up"></i> Approve</a>
-				<a class="btn btn-danger" href="javascript:void(0)" onclick="declinedGrade('<?php echo $row['id']; ?>');"><i class="fas fa-thumbs-down"></i> Decline</a>
+				<a class="btn btn-danger" href="javascript:void(0)" onclick="declinedGrade();"><i class="fas fa-thumbs-down"></i> Decline</a>
             </div>
         </div>
     </div>

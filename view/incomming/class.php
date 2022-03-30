@@ -215,15 +215,19 @@ switch ($_POST['form']) {
 	break;
 
 	case 'approvedGrade':
-			$sql = "UPDATE tbl_studload_qt1 SET status = 2 WHERE ST_SUBJID IN (".$_POST['ids'].")";	
+		for ($i = 1; $i <= 4; $i++) {
+			$sql = "UPDATE tbl_studload_qt$i SET status = 2 WHERE ST_SUBJID IN (".$_POST['ids'].")";	
 			$res = mysqli_query($connect, $sql);
+		}
 			echo $res;
 	break;
 
 
 	case 'decline':
-			$sql = "UPDATE tbl_studload_qt1 SET status = 0, remarks = '".$_POST['remarks']."' WHERE ST_SUBJID IN (".$_POST['ids'].")";	
+		for ($i = 1; $i <= 4; $i++) {
+			$sql = "UPDATE tbl_studload_qt$i SET status = 0, remarks = '".$_POST['remarks']."' WHERE ST_SUBJID IN (".$_POST['ids'].")";	
 			$res = mysqli_query($connect, $sql);
+		}
 			echo $res;
 	break;
 }

@@ -147,7 +147,9 @@
                             include 'view/school-yr-maintenance/index.php'; 
                     }else if ($_REQUEST['url'] == 'archives') {
                             include 'view/archves/index.php'; 
-                    }
+                        }else if ($_REQUEST['url'] == 'print_report') {
+                                include 'view/print-report/index.php'; 
+                        }
                 }
                ?> 
             </div>

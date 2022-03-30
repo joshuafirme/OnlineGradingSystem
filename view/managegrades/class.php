@@ -160,9 +160,13 @@
                         </thead>                                                                       
                         <tbody>
  						<?php
-
-
- 					$sql = "SELECT * FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$_POST['id2']."'";
+					$resubmit_status = '';
+					$field_id = 'INSTRUCTOR_ID';
+					if (isset($_POST['resubmit']) && $_POST['resubmit'] == 1) {
+						$resubmit_status = ' AND status = 0';
+						$field_id = 'USERID';
+					}
+ 					$sql = "SELECT * FROM tbl_studload_qt1 WHERE SUBJ_ID = '".$_POST['id']."' AND $field_id = '".$_POST['id2']."' $resubmit_status";
  					$res = mysqli_query($connect,$sql);
 					while ($row = mysqli_fetch_array($res)) {
 
@@ -359,6 +363,7 @@
  			break;
 
  			case 'loadstudent2':
+				
   					$sql2 = "SELECT * FROM `tbl_highestpossible_score_2` WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$_POST['id2']."'";
  					$res2 = mysqli_query($connect,$sql2);
  					$row_possible_score = mysqli_fetch_array($res2);
@@ -503,7 +508,13 @@
  						<?php
 
 
- 					$sql = "SELECT * FROM tbl_studload_qt2 WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$_POST['id2']."'";
+					$resubmit_status = '';
+					$field_id = 'INSTRUCTOR_ID';
+					if (isset($_POST['resubmit']) && $_POST['resubmit'] == 1) {
+						$resubmit_status = ' AND status = 0';
+						$field_id = 'USERID';
+					}
+					$sql = "SELECT * FROM tbl_studload_qt2 WHERE SUBJ_ID = '".$_POST['id']."' AND $field_id = '".$_POST['id2']."' $resubmit_status";
  					$res = mysqli_query($connect,$sql);
 					while ($row = mysqli_fetch_array($res)) {
 
@@ -778,8 +789,13 @@
                         <tbody>
  						<?php
 
-
- 					$sql = "SELECT * FROM tbl_studload_qt3 WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$_POST['id2']."'";
+					$resubmit_status = '';
+					$field_id = 'INSTRUCTOR_ID';
+					if (isset($_POST['resubmit']) && $_POST['resubmit'] == 1) {
+						$resubmit_status = ' AND status = 0';
+						$field_id = 'USERID';
+					}
+					$sql = "SELECT * FROM tbl_studload_qt3 WHERE SUBJ_ID = '".$_POST['id']."' AND $field_id = '".$_POST['id2']."' $resubmit_status";
  					$res = mysqli_query($connect,$sql);
 					while ($row = mysqli_fetch_array($res)) {
 
@@ -1047,7 +1063,13 @@
  						<?php
 
 
- 					$sql = "SELECT * FROM tbl_studload_qt4 WHERE SUBJ_ID = '".$_POST['id']."' AND INSTRUCTOR_ID = '".$_POST['id2']."'";
+					$resubmit_status = '';
+					$field_id = 'INSTRUCTOR_ID';
+					if (isset($_POST['resubmit']) && $_POST['resubmit'] == 1) {
+						$resubmit_status = ' AND status = 0';
+						$field_id = 'USERID';
+					}
+					$sql = "SELECT * FROM tbl_studload_qt3 WHERE SUBJ_ID = '".$_POST['id']."' AND $field_id = '".$_POST['id2']."' $resubmit_status";
  					$res = mysqli_query($connect,$sql);
 					while ($row = mysqli_fetch_array($res)) {
 

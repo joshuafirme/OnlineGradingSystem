@@ -43,7 +43,10 @@
 			            </tr>
 			        </thead>                                                                       
 			        <tbody id="loadstudents"></tbody>
-			    </table>				
+			    </table>	
+				<div class="mt-2 ml-4">90-94 = w/honor</div>
+				<div class="mt-2 ml-4">95-97 = w/high honor</div>
+				<div class="mt-2 ml-4">98-99 = w/highest</div>		
 			</div>
 
 		</div>		
