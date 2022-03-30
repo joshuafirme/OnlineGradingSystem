@@ -155,7 +155,7 @@
                 }
                 ?>  
                 <?php 
-                if ($rowmodule['view_print_report'] !== 1) {
+                if ($rowmodule['view_print_report'] == 1) {
                     ?>
                    <li><a href="index.php?url=print_report" class="dropdown-item"><i class="fas fa-clipboard"></i> Print report</a></li>
                     <?php
