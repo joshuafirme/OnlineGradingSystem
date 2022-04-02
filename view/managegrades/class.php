@@ -177,7 +177,10 @@
 						$names = "SELECT * FROM tbl_users WHERE userID = '".$row['USERID']."'";
 						$resnames = mysqli_query($connect, $names);
 						$rownames = mysqli_fetch_array($resnames);
-
+						$disabled = '';
+						if (($row['status']==1 || $row['status']==2 || $row['status']==0) && $_POST['resubmit'] != 1) {
+							$disabled = 'disabled';
+						}
 						?>
 						<tr>
 							<td style="text-align: center;"><img style="width: 50px; height: 50px; border-radius: 50%;" src="assets/images/users/<?php echo $rownames['user_avatar']; ?>">
@@ -190,94 +193,94 @@
 								?>
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input1_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input1_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input2_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input2_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input3_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?>	 type="text" max="3" class="form-control table-input written_input3_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input4_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input4_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input5_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input5_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input6_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input6_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input7_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input7_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input8_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input8_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input9_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input9_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input10_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input10_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control written_input_total<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_total']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control written_input_total<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_total']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control  written_input_final_avg_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control  written_input_final_avg_<?php echo $row['ST_SUBJID']?>" value="<?php echo $row['written_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<!-- PERFORMANCE TASK -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input1_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input1_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input2_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input2_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input3_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input3_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input4_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input4_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input5_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input5_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input6_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input6_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input7_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input7_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input8_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input8_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input9_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input9_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input10_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input10_<?php echo $row['ST_SUBJID'];?>" value="<?php echo $row['performance_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control performance_input_total<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['performance_grade_total']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control performance_input_total<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['performance_grade_total']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control performance_final_avg_<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['performance_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control performance_final_avg_<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['performance_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<!-- QUARTERLY ASSESSMENT (20%)	 -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input quarterly_input_<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['quarterly_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input quarterly_input_<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['quarterly_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','','tbl_grades')">
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control quarterly_final_avg_<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['quarterly_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control quarterly_final_avg_<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['quarterly_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control initial_grade_<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['initial_grade']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control initial_grade_<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['initial_grade']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control quaterly_grade_<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['quaterly_final']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control quaterly_grade_<?php echo $row['ST_SUBJID']; ?>" value="<?php echo $row['quaterly_final']; ?>"  style="width: 70px;" readonly>
 							</td>
 				<!-- 			<td>
 								<button class="btn btn-success" onclick="saveGrade('<?php echo $row['ST_SUBJID']; ?>');"><i class="fas fa-check"></i> Save</button>
@@ -526,6 +529,9 @@
  					$res = mysqli_query($connect,$sql);
 					while ($row = mysqli_fetch_array($res)) {
 
+						if ($row['status']==1 || $row['status']==2 || $row['status']==0) {
+							$disabled = 'disabled';
+						}
 						$names = "SELECT * FROM tbl_users WHERE userID = '".$row['USERID']."'";
 						$resnames = mysqli_query($connect, $names);
 						$rownames = mysqli_fetch_array($resnames);
@@ -542,94 +548,94 @@
 								?>
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input1_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input1_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input2_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input2_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input3_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input3_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input4_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input4_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input5_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input5_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input6_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input6_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input7_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input7_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input8_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input8_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input9_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input9_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input10_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input10_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control written_input_total<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_total']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control written_input_total<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_total']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control  written_input_final_avg_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control  written_input_final_avg_<?php echo $row['ST_SUBJID']?>_2" value="<?php echo $row['written_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<!-- PERFORMANCE TASK -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input1_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input1_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input2_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input2_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input3_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input3_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input4_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input4_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input5_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input5_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input6_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input6_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input7_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input7_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input8_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input8_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input9_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input9_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input10_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input10_<?php echo $row['ST_SUBJID'];?>_2" value="<?php echo $row['performance_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control performance_input_total<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['performance_grade_total']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control performance_input_total<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['performance_grade_total']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control performance_final_avg_<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['performance_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control performance_final_avg_<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['performance_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<!-- QUARTERLY ASSESSMENT (20%)	 -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input quarterly_input_<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['quarterly_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input quarterly_input_<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['quarterly_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_2','tbl_grades2')">
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control quarterly_final_avg_<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['quarterly_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control quarterly_final_avg_<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['quarterly_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control initial_grade_<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['initial_grade']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control initial_grade_<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['initial_grade']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control quaterly_grade_<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['quaterly_final']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control quaterly_grade_<?php echo $row['ST_SUBJID']; ?>_2" value="<?php echo $row['quaterly_final']; ?>"  style="width: 70px;" readonly>
 							</td>
 				<!-- 			<td>
 								<button class="btn btn-success" onclick="saveGrade('<?php echo $row['ST_SUBJID']; ?>');"><i class="fas fa-check"></i> Save</button>
@@ -810,7 +816,9 @@
 					$sql = "SELECT * FROM tbl_studload_qt3 WHERE SUBJ_ID = '".$_POST['id']."' AND $field_id = '".$_POST['id2']."' $resubmit_status";
  					$res = mysqli_query($connect,$sql);
 					while ($row = mysqli_fetch_array($res)) {
-
+						if ($row['status']==1 || $row['status']==2 || $row['status']==0) {
+							$disabled = 'disabled';
+						}
 						$names = "SELECT * FROM tbl_users WHERE userID = '".$row['USERID']."'";
 						$resnames = mysqli_query($connect, $names);
 						$rownames = mysqli_fetch_array($resnames);
@@ -827,94 +835,94 @@
 								?>
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input1_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input1_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input2_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input2_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input3_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input3_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input4_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input4_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input5_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input5_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input6_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input6_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input7_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input7_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input8_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input8_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input9_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input9_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input10_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input10_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control written_input_total<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_total']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control written_input_total<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_total']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control  written_input_final_avg_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control  written_input_final_avg_<?php echo $row['ST_SUBJID']?>_3" value="<?php echo $row['written_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<!-- PERFORMANCE TASK -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input1_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input1_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input2_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input2_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input3_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input3_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input4_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input4_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input5_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input5_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input6_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input6_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input7_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input7_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input8_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input8_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input9_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input9_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input10_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input10_<?php echo $row['ST_SUBJID'];?>_3" value="<?php echo $row['performance_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control performance_input_total<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['performance_grade_total']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control performance_input_total<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['performance_grade_total']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control performance_final_avg_<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['performance_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control performance_final_avg_<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['performance_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<!-- QUARTERLY ASSESSMENT (20%)	 -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input quarterly_input_<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['quarterly_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input quarterly_input_<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['quarterly_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_3','tbl_grades3')">
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control quarterly_final_avg_<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['quarterly_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control quarterly_final_avg_<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['quarterly_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control initial_grade_<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['initial_grade']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control initial_grade_<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['initial_grade']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control quaterly_grade_<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['quaterly_final']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control quaterly_grade_<?php echo $row['ST_SUBJID']; ?>_3" value="<?php echo $row['quaterly_final']; ?>"  style="width: 70px;" readonly>
 							</td>
 				<!-- 			<td>
 								<button class="btn btn-success" onclick="saveGrade('<?php echo $row['ST_SUBJID']; ?>');"><i class="fas fa-check"></i> Save</button>
@@ -1088,7 +1096,9 @@
 					$sql = "SELECT * FROM tbl_studload_qt3 WHERE SUBJ_ID = '".$_POST['id']."' AND $field_id = '".$_POST['id2']."' $resubmit_status";
  					$res = mysqli_query($connect,$sql);
 					while ($row = mysqli_fetch_array($res)) {
-
+						if ($row['status']==1 || $row['status']==2 || $row['status']==0) {
+							$disabled = 'disabled';
+						}
 						$names = "SELECT * FROM tbl_users WHERE userID = '".$row['USERID']."'";
 						$resnames = mysqli_query($connect, $names);
 						$rownames = mysqli_fetch_array($resnames);
@@ -1105,94 +1115,94 @@
 								?>
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input1_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input1_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input2_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input2_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input3_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input3_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input4_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input4_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input5_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input5_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input6_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input6_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input7_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input7_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input8_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input8_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input9_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input9_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input written_input10_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input written_input10_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control written_input_total<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_total']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control written_input_total<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_total']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control  written_input_final_avg_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control  written_input_final_avg_<?php echo $row['ST_SUBJID']?>_4" value="<?php echo $row['written_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<!-- PERFORMANCE TASK -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input1_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input1_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input2_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input2_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_2']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input3_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input3_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_3']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input4_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input4_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_4']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input5_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input5_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_5']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input6_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input6_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_6']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input7_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input7_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_7']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input8_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input8_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_8']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input9_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input9_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_9']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input performance_input10_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input performance_input10_<?php echo $row['ST_SUBJID'];?>_4" value="<?php echo $row['performance_grade_10']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control performance_input_total<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['performance_grade_total']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control performance_input_total<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['performance_grade_total']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control performance_final_avg_<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['performance_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control performance_final_avg_<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['performance_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<!-- QUARTERLY ASSESSMENT (20%)	 -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control table-input quarterly_input_<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['quarterly_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control table-input quarterly_input_<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['quarterly_grade_1']; ?>"  style="width: 70px;" onchange="updateaverage('<?php echo $row['ST_SUBJID']; ?>','_4','tbl_grades4')">
 							</td>
 							<td style="width: 10%;"></td> <!-- PS -->
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control quarterly_final_avg_<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['quarterly_grade_ws']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control quarterly_final_avg_<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['quarterly_grade_ws']; ?>"  style="width: 70px;" readonly>
 							</td>
 
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control initial_grade_<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['initial_grade']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control initial_grade_<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['initial_grade']; ?>"  style="width: 70px;" readonly>
 							</td>
 							<td style="width: 10%;">
-								<input type="text" max="3" class="form-control quaterly_grade_<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['quaterly_final']; ?>"  style="width: 70px;" readonly>
+								<input <?php echo $disabled ?> type="text" max="3" class="form-control quaterly_grade_<?php echo $row['ST_SUBJID']; ?>_4" value="<?php echo $row['quaterly_final']; ?>"  style="width: 70px;" readonly>
 							</td>
 				<!-- 			<td>
 								<button class="btn btn-success" onclick="saveGrade('<?php echo $row['ST_SUBJID']; ?>');"><i class="fas fa-check"></i> Save</button>
