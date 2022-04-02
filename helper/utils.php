@@ -1,7 +1,7 @@
 <?php
 class Utils {
     public function printLayoutTemplate($title) {
-        return '
+        $html = '
         <!DOCTYPE html>
         <html>
         <head>
@@ -83,12 +83,19 @@ class Utils {
 
             <div style="width:100%">
 
-            <h1 class="p-name">Senior High School</h1>
-            <div style="text-align:center;">Instructor: '.$_GET['instructor'].'<div>
-            <div style="text-align:center;">Section: '.$_GET['sec'].'<div>
-            <div style="text-align:center;">Subject: '.$_GET['subj'].'<div>
+            <h1 class="p-name">Senior High School</h1>';
+            if ($title != 'Report Card') {
+                $html .= '
+                <div style="text-align:center;">Instructor: '.$_GET['instructor'].'<div>
+                <div style="text-align:center;">Section: '.$_GET['sec'].'<div>
+                <div style="text-align:center;">Subject: '.$_GET['subj'].'<div>';
+            }
+
+            $html .= '
             <div style="text-align:center;">SY: '.$_GET['sy']. ' '. $_GET['term'] . ' Term'.'<div>
             <h2 style="text-align:center;">'.$title.'</h2>';
+
+            return $html;
      }
 }
 ?>

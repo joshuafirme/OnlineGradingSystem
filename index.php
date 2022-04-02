@@ -149,6 +149,8 @@
                             include 'view/archves/index.php'; 
                         }else if ($_REQUEST['url'] == 'print_report') {
                                 include 'view/print-report/index.php'; 
+                        }else if ($_REQUEST['url'] == 'report_card') {
+                                include 'view/report-card/index.php'; 
                         }
                 }
                ?> 

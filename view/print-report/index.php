@@ -1,7 +1,7 @@
  <!-- MODIFIED BY JOSH -->
 <div class="row page-titles">
     <div class="col-md-6 col-8 align-self-center">
-        <h3 class="text-themecolor mb-0 mt-0"><i class="fas fa-folder"></i> Print report</h3>
+        <h3 class="text-themecolor mb-0 mt-0"><i class="fas fa-folder"></i> School Year</h3>
     </div>
 </div>
  <?php 
@@ -9,7 +9,7 @@
   ?>
 <div class="col-md-12">
 	<div class="card-header  bg-info">
-		<h3 class="text-white"><i class="fas fa-list"></i> Print report</h3>
+		<h3 class="text-white"><i class="fas fa-list"></i> School Year</h3>
 	</div>
 	<div class="card" style="padding-top: 5px;box-shadow: 3px 5px 5px 3px #888888; padding: 3px;">
 		<div class="card-body">

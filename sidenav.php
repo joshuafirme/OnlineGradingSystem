@@ -157,7 +157,13 @@
                 <?php 
                 if ($rowmodule['view_print_report'] == 1) {
                     ?>
-                   <li><a href="index.php?url=print_report" class="dropdown-item"><i class="fas fa-clipboard"></i> Print report</a></li>
+                                <li>
+                        <a class="has-arrow" href="#" aria-expanded="false"><i class="fas fa-file"></i><span class="hide-menu"> Print Report</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="index.php?url=report_card" class="dropdown-item"><i class="fas fa-clipboard"></i> Report Card</a></li>
+                            <li><a href="index.php?url=print_report" class="dropdown-item"><i class="fas fa-clipboard"></i> School Year</a></li>
+                        </ul>
+                    </li>
                     <?php
                 }
                 ?>     
